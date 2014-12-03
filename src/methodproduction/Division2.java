@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package methodologie;
+package methodproduction;
 
 import java.util.ArrayList;
 
@@ -11,10 +11,10 @@ import java.util.ArrayList;
  *
  * @author yann01240
  */
-public abstract class Coupe extends National {
+public class Division2 extends Championnat {
 
-    public Coupe(ArrayList<Equipe> equipes) {
-        super(equipes);
+    public Division2(String nom, ArrayList<Equipe> equipes) {
+        super(nom, equipes);
     }
-    
+
 }

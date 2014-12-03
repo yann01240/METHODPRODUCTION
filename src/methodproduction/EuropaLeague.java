@@ -1,19 +1,19 @@
-package methodologie;
-
-import java.util.ArrayList;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package methodproduction;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author yann01240
  */
-public abstract class Europe extends Competition {
+public class EuropaLeague extends Europe {
 
-    public Europe(ArrayList<Equipe> equipes) {
+    public EuropaLeague(ArrayList<Equipe> equipes) {
         super(equipes);
     }
     

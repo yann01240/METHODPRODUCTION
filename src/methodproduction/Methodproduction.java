@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package methodologie;
+package methodproduction;
 
 /**
  *
  * @author yann01240
  */
-public class Methodologie {
+public class Methodproduction {
 
     /**
      * @param args the command line arguments
