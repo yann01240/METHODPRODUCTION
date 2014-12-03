@@ -23,4 +23,7 @@ public class Equipe {
     public void setNomEquipe(String nomEquipe) {
         this.nomEquipe = nomEquipe;
     }
+    
+  
+    
 }

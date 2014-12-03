@@ -12,9 +12,20 @@ import java.util.ArrayList;
  * @author yann01240
  */
 public class EuropaLeague extends Europe {
+    private String[][] groupe;
 
     public EuropaLeague(ArrayList<Equipe> equipes) {
         super(equipes);
+    }
+    
+    public void brassage(){
+        for(int i =0;i<48; i++){
+            
+        }
+        
+        
+        
+        
     }
     
 }
