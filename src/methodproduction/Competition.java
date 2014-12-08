@@ -46,8 +46,7 @@ public abstract class Competition {
                 InputStreamReader inputs = new InputStreamReader(fichier_int, "Latin1");
                 try (BufferedReader input = new BufferedReader(inputs)) {
                     while ((ligne = input.readLine()) != null) {
-                        String[] fields = ligne.split(";");
-                        addEquipe(new Equipe(fields[0]);
+                        addEquipe(new Equipe(ligne.split(";"));
                     }
                     System.out.println("Liste chargee");
                 }
