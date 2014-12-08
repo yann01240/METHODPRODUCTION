@@ -11,9 +11,11 @@ package methodproduction;
  */
 public class Equipe {
     String nomEquipe;
+    String nationEquipe;
 
-    public Equipe(String nom) {
+    public Equipe(String nom, String nationEquipe) {
         this.nomEquipe = nom;
+        this.nationEquipe = nationEquipe;
     }
 
     public String getNomEquipe() {
@@ -23,7 +25,13 @@ public class Equipe {
     public void setNomEquipe(String nomEquipe) {
         this.nomEquipe = nomEquipe;
     }
-    
-  
+
+    public String getNationEquipe() {
+        return nationEquipe;
+    }
+
+    public void setNationEquipe(String nationEquipe) {
+        this.nationEquipe = nationEquipe;
+    }
     
 }

@@ -35,7 +35,7 @@ public abstract class Competition {
     }
 
     public void loadFileCSV() {
-        String ligne, idt, nom, prenom, dept, bac;
+        String ligne;
         try {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setCurrentDirectory(new File("."));
@@ -46,7 +46,7 @@ public abstract class Competition {
                 InputStreamReader inputs = new InputStreamReader(fichier_int, "Latin1");
                 try (BufferedReader input = new BufferedReader(inputs)) {
                     while ((ligne = input.readLine()) != null) {
-                        addEquipe(new Equipe(ligne.split(";"));
+                        equipes.add(new Equipe("nom","nation")); // à modifier
                     }
                     System.out.println("Liste chargee");
                 }
@@ -55,9 +55,4 @@ public abstract class Competition {
             System.out.println("Probleme import csv");
         }
     }
-
-    private void addEquipe(Equipe equipe) {
-        equipes.add(equipe);
-    }
-
 }
