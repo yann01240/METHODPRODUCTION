@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class Groupe {
     public int point;
     public ArrayList<Equipe> groupe;
-    public ArrayList<Equipe>[][][] tab;
 
     public Groupe(ArrayList<Equipe> groupe) {
         this.groupe = groupe;
@@ -23,7 +22,7 @@ public class Groupe {
     
     public ArrayList<Equipe> rencontre(ArrayList<Equipe> groupe){
         for(int i = 0; i<groupe.size();i++){
-          
+          //groupe.get(i)
         }
         
         

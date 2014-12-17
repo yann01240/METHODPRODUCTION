@@ -12,6 +12,7 @@ package methodproduction;
 public class Equipe {
     String nomEquipe;
     String nationEquipe;
+    int point;
 
     public Equipe(String nom, String nationEquipe) {
         this.nomEquipe = nom;
@@ -33,5 +34,14 @@ public class Equipe {
     public void setNationEquipe(String nationEquipe) {
         this.nationEquipe = nationEquipe;
     }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+    
     
 }
