@@ -45,8 +45,8 @@ public abstract class Competition {
                 FileInputStream fichier_int = new FileInputStream(fileChooser.getSelectedFile());
                 InputStreamReader inputs = new InputStreamReader(fichier_int, "Latin1");
                 try (BufferedReader input = new BufferedReader(inputs)) {
-                    while ((ligne = input.readLine()) != null) {
-                        equipes.add(new Equipe("nom","nation")); // à modifier
+                    while ((ligne = input.readLine()) != null) {    
+                        equipes.add(new Equipe("nom", "nation")); // à modifier
                     }
                     System.out.println("Liste chargee");
                 }

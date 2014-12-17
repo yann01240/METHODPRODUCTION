@@ -5,6 +5,8 @@
  */ 
 package methodproduction;
 
+import packVue.MaFenetre;
+
 /**
  *
  * @author yann01240
@@ -15,7 +17,8 @@ public class Methodproduction {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        MaFenetre fen = new MaFenetre();
+        fen.setVisible(true);
     }
     
 }
