@@ -22,12 +22,14 @@ public class ConnexionBD {
 
                 //on r�cup�re le nom de la bd dans le fichier nomBD.txt
                 connect = DriverManager.getConnection("jdbc:sqlite:scaryShop.sqlite ");
+                System.out.println("Connexion etablie");
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 connect = null;
                 System.err.println(ex.getMessage());
             }
         }
-    }
+    } 
+    
 
     public static Connection getConnexion() {
         if (connect == null) {

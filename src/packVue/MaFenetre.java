@@ -6,12 +6,15 @@
 package packVue;
 
 import java.io.File;
+import packModele.ConnexionBD;
 
 /**
  *
  * @author Aurèle
  */
 public class MaFenetre extends javax.swing.JFrame {
+    
+    ConnexionBD con = new ConnexionBD();
 
     /**
      * Creates new form MaFenetre
