@@ -7,6 +7,7 @@
 package methodproduction;
 //import methodproduction.
 
+import packModele.Equipe;
 import java.util.ArrayList;
 
 /**

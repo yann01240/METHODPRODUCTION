@@ -1,5 +1,6 @@
 package methodproduction;
 
+import packModele.Equipe;
 import java.util.ArrayList;
 
 /*
