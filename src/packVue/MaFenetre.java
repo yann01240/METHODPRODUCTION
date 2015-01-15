@@ -45,7 +45,6 @@ public class MaFenetre extends javax.swing.JFrame {
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox6 = new javax.swing.JCheckBox();
         label1 = new java.awt.Label();
-        jSeparator1 = new javax.swing.JSeparator();
         label2 = new java.awt.Label();
         jComboBox1 = new javax.swing.JComboBox();
         label3 = new java.awt.Label();
@@ -54,8 +53,8 @@ public class MaFenetre extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Football Championship 2015", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Football Championship 2015"));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Classement Mondial des équipes"));
@@ -73,8 +72,7 @@ public class MaFenetre extends javax.swing.JFrame {
 
         jButton1.setText("Lancer le(s) Championnat(s)");
 
-        jCheckBox1.setBackground(new java.awt.Color(0, 0, 0));
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setBackground(new java.awt.Color(153, 153, 153));
         jCheckBox1.setText("Division 1");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,14 +80,12 @@ public class MaFenetre extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox2.setBackground(new java.awt.Color(0, 0, 0));
-        jCheckBox2.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox2.setBackground(new java.awt.Color(153, 153, 153));
         jCheckBox2.setText("Divison 2");
 
         jButton2.setText("Voir le(s) Classement(s)");
 
-        jCheckBox4.setBackground(new java.awt.Color(0, 0, 0));
-        jCheckBox4.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox4.setBackground(new java.awt.Color(153, 153, 153));
         jCheckBox4.setText("Coupe Nationale");
         jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,30 +93,25 @@ public class MaFenetre extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox5.setBackground(new java.awt.Color(0, 0, 0));
-        jCheckBox5.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox5.setBackground(new java.awt.Color(153, 153, 153));
         jCheckBox5.setText("Coupe de la Ligue");
 
-        jCheckBox3.setBackground(new java.awt.Color(0, 0, 0));
-        jCheckBox3.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox3.setBackground(new java.awt.Color(153, 153, 153));
         jCheckBox3.setText("Europa League");
 
-        jCheckBox6.setBackground(new java.awt.Color(0, 0, 0));
-        jCheckBox6.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox6.setBackground(new java.awt.Color(153, 153, 153));
         jCheckBox6.setText("Champions League");
 
-        label1.setForeground(new java.awt.Color(255, 255, 255));
+        label1.setForeground(new java.awt.Color(0, 0, 0));
         label1.setText("Selectionner vos Championnats");
 
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        label2.setForeground(new java.awt.Color(255, 255, 255));
+        label2.setForeground(new java.awt.Color(0, 0, 0));
         label2.setText("Selectionner votre pays*");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         label3.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        label3.setForeground(new java.awt.Color(255, 255, 255));
+        label3.setForeground(new java.awt.Color(0, 0, 0));
         label3.setText("*Si vous voulez une compétition nationale");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -145,25 +136,23 @@ public class MaFenetre extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 40, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jCheckBox1)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jCheckBox1)
                                     .addComponent(jCheckBox4)
                                     .addComponent(jCheckBox2))
-                                .addGap(61, 61, 61)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jCheckBox5)
                                     .addComponent(jCheckBox3)
                                     .addComponent(jCheckBox6)))
-                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -186,21 +175,18 @@ public class MaFenetre extends javax.swing.JFrame {
                         .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jCheckBox1)
-                                    .addComponent(jCheckBox6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jCheckBox2)
-                                    .addComponent(jCheckBox3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jCheckBox4)
-                                    .addComponent(jCheckBox5)))
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox1)
+                            .addComponent(jCheckBox6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox2)
+                            .addComponent(jCheckBox3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox4)
+                            .addComponent(jCheckBox5))
                         .addGap(15, 15, 15)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -288,7 +274,6 @@ public class MaFenetre extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSeparator jSeparator1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;
