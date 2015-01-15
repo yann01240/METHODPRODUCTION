@@ -21,7 +21,7 @@ public class ConnexionBD {
                 Class.forName("org.sqlite.JDBC").newInstance();
 
                 //on r�cup�re le nom de la bd dans le fichier nomBD.txt
-                connect = DriverManager.getConnection("jdbc:sqlite:scaryShop.sqlite ");
+                connect = DriverManager.getConnection("jdbc:sqlite:fifa.sqlite ");
                 System.out.println("Connexion etablie");
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 connect = null;
