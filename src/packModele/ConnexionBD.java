@@ -15,6 +15,8 @@ public class ConnexionBD {
     ArrayList<Pays> listPays;
     private static Connection connect = null;
 
+    
+    //Connexion a la base de donnée "scaryShop.sqlite"
     public ConnexionBD() {
         if (connect == null) {
             try {
@@ -31,6 +33,7 @@ public class ConnexionBD {
     } 
     
 
+    //Fonction qui vérifie la connexion
     public static Connection getConnexion() {
         if (connect == null) {
             ConnexionBD connexionBD = new ConnexionBD();
