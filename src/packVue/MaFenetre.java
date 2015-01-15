@@ -57,7 +57,7 @@ public class MaFenetre extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Football Championship 2015"));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Classement Mondial des équipes"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Résultats"));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
