@@ -25,6 +25,7 @@ public class Requetes {
             ArrayList<Integer> list = new ArrayList();
             Statement st = ConnexionBD.getConnexion().createStatement();
             ResultSet rs = st.executeQuery("select `id` from `clients`");
+            
             while (rs.next()) {
                 list.add(rs.getInt("id"));
             }
