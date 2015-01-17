@@ -5,7 +5,6 @@
  */ 
 package methodproduction;
 
-import packModele.Requetes;
 import packVue.MaFenetre;
 
 /**

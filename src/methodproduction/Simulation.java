@@ -11,5 +11,4 @@ package methodproduction;
  */
 public interface Simulation {
     
-    
 }

@@ -8,7 +8,6 @@ package packVue;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Vector;
 import packModele.ConnexionBD;
 
@@ -17,9 +16,6 @@ import packModele.ConnexionBD;
  * @author Aurèle
  */
 public class MaFenetre extends javax.swing.JFrame {
-    
-    ConnexionBD con = new ConnexionBD();
-
     /**
      * Creates new form MaFenetre
      */
