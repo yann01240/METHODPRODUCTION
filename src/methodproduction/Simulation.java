@@ -5,17 +5,12 @@
  */
 package methodproduction;
 
-import packModele.Equipe;
-import java.util.ArrayList;
-
 /**
  *
  * @author yann01240
  */
-public class EuropaLeague extends Europe {
-
-    public EuropaLeague(ArrayList<Equipe> equipes) {
-        super(equipes);
-    }
+public interface Simulation {
+    
+    public void Classement();
     
 }

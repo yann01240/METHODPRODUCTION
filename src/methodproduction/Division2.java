@@ -16,8 +16,8 @@ public class Division2 extends Championnat {
 
     private Equipe[] tab;
 
-    public Division2(String nom, ArrayList<Equipe> equipes) {
-        super(nom, equipes);
+    public Division2(ArrayList<Equipe> equipes) {
+        super(equipes);
     }
 
     public void Classement_D2() {

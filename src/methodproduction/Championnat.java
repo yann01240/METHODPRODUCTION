@@ -13,22 +13,8 @@ import java.util.ArrayList;
  * @author yann01240
  */
 public abstract class Championnat extends National {
-    String nom;
 
-    public Championnat(String nom, ArrayList<Equipe> equipes) {
+    public Championnat(ArrayList<Equipe> equipes) {
         super(equipes);
-        this.nom = nom;
     }
-    
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-    
-    
-    
 }

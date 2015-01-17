@@ -10,13 +10,16 @@ package packModele;
  * @author yann01240
  */
 public class Equipe {
-    String nomEquipe;
-    String nationEquipe;
-    int point;
+    private String nomEquipe;
+    private String nationEquipe;
+    private int division;
+    private int point;
 
-    public Equipe(String nom, String nationEquipe) {
+    public Equipe(String nom, String nationEquipe, int division) {
         this.nomEquipe = nom;
         this.nationEquipe = nationEquipe;
+        this.division=division;
+        point = 0;
     }
 
     public String getNomEquipe() {
@@ -41,6 +44,14 @@ public class Equipe {
 
     public void setPoint(int point) {
         this.point = point;
+    }
+
+    public int getDivision() {
+        return division;
+    }
+
+    public void setDivision(int division) {
+        this.division = division;
     }
     
     

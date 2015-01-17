@@ -19,7 +19,7 @@ import javax.swing.JFileChooser;
  *
  * @author yann01240
  */
-public abstract class Competition {
+public abstract class Competition implements Simulation {
 
     ArrayList<Equipe> equipes;
 
@@ -33,27 +33,5 @@ public abstract class Competition {
 
     public void setEquipes(ArrayList<Equipe> equipes) {
         this.equipes = equipes;
-    }
-
-    public void loadFileCSV() {
-        String ligne;
-        try {
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setCurrentDirectory(new File("."));
-            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            int result = fileChooser.showOpenDialog(null);
-            if (result == JFileChooser.APPROVE_OPTION) {
-                FileInputStream fichier_int = new FileInputStream(fileChooser.getSelectedFile());
-                InputStreamReader inputs = new InputStreamReader(fichier_int, "Latin1");
-                try (BufferedReader input = new BufferedReader(inputs)) {
-                    while ((ligne = input.readLine()) != null) {    
-                        equipes.add(new Equipe("nom", "nation")); // à modifier
-                    }
-                    System.out.println("Liste chargee");
-                }
-            }
-        } catch (HeadlessException | IOException exception) {
-            System.out.println("Probleme import csv");
-        }
     }
 }
