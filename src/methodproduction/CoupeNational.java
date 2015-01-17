@@ -7,6 +7,7 @@ package methodproduction;
 
 import packModele.Equipe;
 import java.util.ArrayList;
+import packModele.Requetes;
 
 /**
  *
@@ -14,8 +15,8 @@ import java.util.ArrayList;
  */
 public class CoupeNational extends Coupe {
 
-    public CoupeNational(ArrayList<Equipe> equipes) {
-        super(equipes);
+    public CoupeNational(String pays) {
+        super(Requetes.getPaysEquipe(pays));
     }
     
 }

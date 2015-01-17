@@ -53,6 +53,12 @@ public class Equipe {
     public void setDivision(int division) {
         this.division = division;
     }
+
+    @Override
+    public String toString() {
+        return "Equipe{" + "nomEquipe=" + nomEquipe + ", nationEquipe=" + nationEquipe + ", division=" + division + '}';
+    }
+    
     
     
 }

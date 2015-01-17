@@ -7,6 +7,7 @@ package methodproduction;
 
 import packModele.Equipe;
 import java.util.ArrayList;
+import packModele.Requetes;
 
 /**
  *
@@ -14,25 +15,7 @@ import java.util.ArrayList;
  */
 public class Division2 extends Championnat {
 
-    private Equipe[] tab;
-
-    public Division2(ArrayList<Equipe> equipes) {
-        super(equipes);
-    }
-
-    public void Classement_D2() {
-        for (int i = 0; i < equipes.size(); i++) {
-            tab[i] = equipes.get((int) Math.random() * 10);
-            for (int j = 0; j < tab.length; j++) {
-                if (tab[i].equals(tab[j])) {
-                    i--;
-                    continue;
-                }
-            }
-        }
-
-        for (int i = 0; i < tab.length; i++) {
-            System.out.println(i + "  " + tab[i]);
-        }
+    public Division2(String pays) {
+        super(Requetes.getPaysDivisionEquipe(pays,2));
     }
 }

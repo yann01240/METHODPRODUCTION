@@ -27,11 +27,19 @@ public abstract class Competition implements Simulation {
         this.equipes = equipes;
     }
 
-    public ArrayList<Equipe> getEquipes() {
-        return equipes;
-    }
-
     public void setEquipes(ArrayList<Equipe> equipes) {
         this.equipes = equipes;
+    }
+    
+    public void addEquipe(Equipe equipe) {
+        this.equipes.add(equipe);
+    }
+    
+    public void removeEquipe(Equipe equipe) {
+        this.equipes.remove(equipe);
+    }
+    
+    public void clearEquipes() {
+        this.equipes.clear();
     }
 }

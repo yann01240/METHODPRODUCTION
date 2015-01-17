@@ -11,6 +11,5 @@ package methodproduction;
  */
 public interface Simulation {
     
-    public void Classement();
     
 }
