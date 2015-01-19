@@ -17,4 +17,15 @@ public class CoupeNational extends Coupe {
         super(Requetes.getPaysEquipe(pays));
     }
     
+    @Override
+    public String toString() {
+        String resultat = "Coupe National de "+equipes.get(0).getNationEquipe()+"\n"
+                + "==================================================================================\n";
+        for (String score : scores) {
+            resultat += score + "\n";
+        }
+        resultat += "\nGagnant:\n"+equipes.get(0).getNomEquipe()+"\n";
+        return resultat;
+    }
+    
 }

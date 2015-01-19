@@ -17,5 +17,5 @@ public abstract class Coupe extends National {
     public Coupe(ArrayList<Equipe> equipes) {
         super(equipes);
     }
-    
+
 }

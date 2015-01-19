@@ -10,6 +10,7 @@ package packModele;
  * @author yann01240
  */
 public class Equipe {
+
     private String nomEquipe;
     private String nationEquipe;
     private int division;
@@ -18,7 +19,7 @@ public class Equipe {
     public Equipe(String nom, String nationEquipe, int division) {
         this.nomEquipe = nom;
         this.nationEquipe = nationEquipe;
-        this.division=division;
+        this.division = division;
         point = 0;
     }
 
@@ -56,9 +57,26 @@ public class Equipe {
 
     @Override
     public String toString() {
-        return "Equipe{" + "nomEquipe=" + nomEquipe + ", nationEquipe=" + nationEquipe + ", division=" + division + '}';
+        return "Equipe{" + "nomEquipe=" + nomEquipe + ", nationEquipe=" + nationEquipe + ", division=" + division + ", point=" + point + '}';
     }
-    
-    
-    
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (obj == this) {
+            return true;
+        }
+
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        Equipe equipe = (Equipe) obj;
+        return point == equipe.point && nomEquipe == equipe.getNomEquipe() && nationEquipe == equipe.getNationEquipe();
+
+    }
+
+    public int compareTo(Equipe equipe) {
+        return new Integer(this.point).compareTo(equipe.point);
+    }
+
 }

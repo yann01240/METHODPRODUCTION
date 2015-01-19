@@ -5,6 +5,8 @@
  */
 package methodproduction;
 
+import java.util.ArrayList;
+import packModele.Equipe;
 import packModele.Requetes;
 
 /**
@@ -14,7 +16,17 @@ import packModele.Requetes;
 public class EuropaLeague extends Europe {
 
     public EuropaLeague() {
-        super(Requetes.getAllEquipe());
+        super(new ArrayList<Equipe>());
     }
     
+        @Override
+    public String toString() {
+        String resultat = "Europa League\n"
+                + "==================================================================================\n";
+        for (String score : scores) {
+            resultat += score + "\n";
+        }
+        resultat += "\nGagnant:\n"+equipes.get(0).getNomEquipe()+"\n";
+        return resultat;
+    }
 }

@@ -5,6 +5,8 @@
  */
 package methodproduction;
 
+import java.util.ArrayList;
+import packModele.Equipe;
 import packModele.Requetes;
 
 /**
@@ -14,7 +16,18 @@ import packModele.Requetes;
 public class ChampionsLeague extends Europe {
 
     public ChampionsLeague() {
-        super(Requetes.getAllEquipe());
+        super(new ArrayList<Equipe>());
+    }
+    
+    @Override
+    public String toString() {
+        String resultat = "Champions League\n"
+                + "==================================================================================\n";
+        for (String score : scores) {
+            resultat += score + "\n";
+        }
+        resultat += "\nGagnant:\n"+equipes.get(0).getNomEquipe()+"\n";
+        return resultat;
     }
     
 }
