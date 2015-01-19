@@ -21,8 +21,17 @@ public class ChampionsLeague extends Europe {
     
     @Override
     public String toString() {
-        String resultat = "Champions League\n"
-                + "==================================================================================\n";
+        int max = 0;
+        for (String score : scores) {
+            if (score.length()>max){
+                max=score.length();
+            }
+        }
+        String ligne = "";
+        for (int i = 0; i < max+2; i++) {
+                ligne+="=";
+            }
+        String resultat = "Champions League\n"+ligne + "\n";
         for (String score : scores) {
             resultat += score + "\n";
         }

@@ -5,10 +5,24 @@
  */
 package packVue;
 
+import java.awt.Component;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.JTextPane;
+import javax.swing.text.MutableAttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+import methodproduction.ChampionsLeague;
+import methodproduction.Competition;
+import methodproduction.CoupeDeLaLigue;
+import methodproduction.CoupeNational;
+import methodproduction.Division1;
+import methodproduction.Division2;
+import methodproduction.EuropaLeague;
 import packModele.ConnexionBD;
 
 /**
@@ -16,11 +30,31 @@ import packModele.ConnexionBD;
  * @author Aurèle
  */
 public class MaFenetre extends javax.swing.JFrame {
+
     /**
      * Creates new form MaFenetre
      */
+    ArrayList<Competition> competitions = new ArrayList<>();
+    
+        Vector<String> list = new Vector();
+
     public MaFenetre() {
         initComponents();
+        try {
+            Statement st = ConnexionBD.getConnexion().createStatement();
+            ResultSet rs = st.executeQuery("select `nom_pays` from `equipe` group by `nom_pays` order by 1;");
+            while (rs.next()) {
+                list.add(rs.getString("nom_pays"));
+            }
+        } catch (Exception ex) {
+        }
+        jComboBox1.setEnabled(false);
+        jComboBox3.setEnabled(false);
+        jComboBox1.setSelectedIndex(-1);
+        StyledDocument doc = jTextPane1.getStyledDocument();
+        MutableAttributeSet center = new SimpleAttributeSet();
+        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+        doc.setParagraphAttributes(0, 0, center, true);
         Montrer("logo.png");
     }
 
@@ -35,20 +69,14 @@ public class MaFenetre extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        list1 = new java.awt.List();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jButton2 = new javax.swing.JButton();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        label1 = new java.awt.Label();
-        label2 = new java.awt.Label();
+        label = new java.awt.Label();
         jComboBox1 = new javax.swing.JComboBox();
-        label3 = new java.awt.Label();
         jPanel3 = new javax.swing.JPanel();
+        label1 = new java.awt.Label();
+        jComboBox3 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -59,80 +87,64 @@ public class MaFenetre extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Résultats"));
 
+        jTextPane1.setEditable(false);
+        jScrollPane1.setViewportView(jTextPane1);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(list1, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(list1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
 
-        jButton1.setText("Lancer le(s) Championnat(s)");
-
-        jCheckBox1.setBackground(new java.awt.Color(153, 153, 153));
-        jCheckBox1.setText("Division 1");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Lancer la saison");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        jCheckBox2.setBackground(new java.awt.Color(153, 153, 153));
-        jCheckBox2.setText("Divison 2");
+        label.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        label.setForeground(new java.awt.Color(51, 51, 51));
+        label.setText("Selectionner votre pays");
 
-        jButton2.setText("Voir le(s) Classement(s)");
-
-        jCheckBox4.setBackground(new java.awt.Color(153, 153, 153));
-        jCheckBox4.setText("Coupe Nationale");
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox5.setBackground(new java.awt.Color(153, 153, 153));
-        jCheckBox5.setText("Coupe de la Ligue");
-
-        jCheckBox3.setBackground(new java.awt.Color(153, 153, 153));
-        jCheckBox3.setText("Europa League");
-
-        jCheckBox6.setBackground(new java.awt.Color(153, 153, 153));
-        jCheckBox6.setText("Champions League");
-
-        label1.setForeground(new java.awt.Color(0, 0, 0));
-        label1.setText("Selectionner vos Championnats");
-
-        label2.setForeground(new java.awt.Color(0, 0, 0));
-        label2.setText("Selectionner votre pays*");
-
-        Vector<String> list = new Vector();
-        try {
-            Statement st = ConnexionBD.getConnexion().createStatement();
-            ResultSet rs = st.executeQuery("select `nom_pays` from `equipe` group by `nom_pays`");
-            while (rs.next()) {
-                list.add(rs.getString("nom_pays"));
-            }
-        } catch (Exception ex) {
-        }
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(list));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
-        label3.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        label3.setForeground(new java.awt.Color(0, 0, 0));
-        label3.setText("*Si vous voulez une compétition nationale");
+        jPanel3.setMaximumSize(new java.awt.Dimension(396, 207));
+        jPanel3.setMinimumSize(new java.awt.Dimension(396, 207));
+        jPanel3.setPreferredSize(new java.awt.Dimension(396, 207));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 396, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 131, Short.MAX_VALUE)
+            .addGap(0, 207, Short.MAX_VALUE)
         );
+
+        label1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        label1.setForeground(new java.awt.Color(51, 51, 51));
+        label1.setText("Selectionner votre compétition");
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Champions League", "Europa League", "Division 1", "Division 2", "Coupe Nationale", "Coupe de la Ligue" }));
+        jComboBox3.setSelectedIndex(-1);
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,69 +152,39 @@ public class MaFenetre extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckBox1)
-                                            .addComponent(jCheckBox4)
-                                            .addComponent(jCheckBox2))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckBox5)
-                                            .addComponent(jCheckBox3)
-                                            .addComponent(jCheckBox6)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)))
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox3)
+                            .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox1)
-                            .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox2)
-                            .addComponent(jCheckBox3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox4)
-                            .addComponent(jCheckBox5))
-                        .addGap(15, 15, 15)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(140, 140, 140)))
                 .addContainerGap())
         );
 
@@ -210,50 +192,183 @@ public class MaFenetre extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        if (jComboBox3.getSelectedIndex() < 2 && jComboBox3.getSelectedIndex() >= 0) {
+            jComboBox1.setEnabled(false);
+            jComboBox1.setSelectedIndex(-1);
+            jTextPane1.setText(competitions.get(competitions.size() - 1 - jComboBox3.getSelectedIndex()).toString());
+        } else if (jComboBox3.getSelectedIndex() < 0) {
+            jTextPane1.setText("");
+        } else if (jComboBox3.getSelectedIndex() >= 2 && jComboBox3.getSelectedIndex() < 6 && jComboBox1.getSelectedIndex() < 0) {
+            jTextPane1.setText("");
+            jComboBox1.setEnabled(true);
+        } else if (jComboBox3.getSelectedIndex() >= 2 && jComboBox3.getSelectedIndex() < 6 && jComboBox1.getSelectedIndex() >= 0) {
+            
+            switch (jComboBox3.getSelectedIndex()) {
+                case 2:
+                    for (Competition competition : competitions) {
+                        if (competition instanceof Division1 && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(competition.toString());
+                        }
+                    }
+                    break;
+                case 3:
+                    for (Competition competition : competitions) {
+                        if (competition instanceof Division2 && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(competition.toString());
+                        }
+                    }
+                    break;
+                case 4:
+                    for (Competition competition : competitions) {
+                        if (competition instanceof CoupeNational && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(competition.toString());
+                        }
+                    }
+                    break;
+                case 5:
+                    for (Competition competition : competitions) {
+                        if (competition instanceof CoupeDeLaLigue && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(competition.toString());
+                        }
+                    }
+                    break;
+            }
+        }
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        jComboBox1.setEnabled(false);
+        jComboBox3.setEnabled(false);
+
+        jComboBox1.setSelectedIndex(-1);
+
+        jComboBox3.setSelectedIndex(-1);
+        competitions.clear();
+
+        try {
+            Statement st = ConnexionBD.getConnexion().createStatement();
+            ResultSet rs = st.executeQuery("select `nom_pays` from `equipe` group by `nom_pays` order by 1;");
+            while (rs.next()) {
+                try {
+                    competitions.add(new Division1(rs.getString("nom_pays")));
+                    competitions.get(competitions.size() - 1).simulation();
+                } catch (Exception e) {
+                    competitions.remove(competitions.size() - 1);
+                }
+                try {
+                    competitions.add(new Division2(rs.getString("nom_pays")));
+                    competitions.get(competitions.size() - 1).simulation();
+                } catch (Exception e) {
+                    competitions.remove(competitions.size() - 1);
+                }
+                try {
+                    competitions.add(new CoupeDeLaLigue(rs.getString("nom_pays")));
+                    competitions.get(competitions.size() - 1).simulation();
+                } catch (Exception e) {
+                    competitions.remove(competitions.size() - 1);
+                }
+                try {
+                    competitions.add(new CoupeNational(rs.getString("nom_pays")));
+                    competitions.get(competitions.size() - 1).simulation();
+                } catch (Exception e) {
+                    competitions.remove(competitions.size() - 1);
+                }
+            }
+            competitions.add(new EuropaLeague());
+            competitions.add(new ChampionsLeague());
+            for (Competition competition : competitions) {
+                try {
+                    competitions.get(competitions.size() - 1).addAllEquipes(competition.selectionChampions());
+                    competitions.get(competitions.size() - 2).addAllEquipes(competition.selectionEuropa());
+                } catch (Exception e) {
+                }
+            }
+            competitions.get(competitions.size() - 2).simulation();
+            competitions.get(competitions.size() - 1).simulation();
+        } catch (Exception ex) {
+        }
+        jComboBox1.setEnabled(false);
+        jComboBox3.setEnabled(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        if (jComboBox3.getSelectedIndex() < 2 && jComboBox3.getSelectedIndex() >= 0) {
+            jComboBox1.setEnabled(false);
+            jComboBox1.setSelectedIndex(-1);
+            jTextPane1.setText(competitions.get(competitions.size() - 1 - jComboBox3.getSelectedIndex()).toString());
+        } else if (jComboBox3.getSelectedIndex() < 0) {
+            jTextPane1.setText("");
+        } else if (jComboBox3.getSelectedIndex() >= 2 && jComboBox3.getSelectedIndex() < 6 && jComboBox1.getSelectedIndex() < 0) {
+            jTextPane1.setText("");
+            jComboBox1.setEnabled(true);
+        } else if (jComboBox3.getSelectedIndex() >= 2 && jComboBox3.getSelectedIndex() < 6 && jComboBox1.getSelectedIndex() >= 0) {
+            
+            switch (jComboBox3.getSelectedIndex()) {
+                case 2:
+                    for (Competition competition : competitions) {
+                        if (competition instanceof Division1 && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(competition.toString());
+                        }
+                    }
+                    break;
+                case 3:
+                    for (Competition competition : competitions) {
+                        if (competition instanceof Division2 && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(competition.toString());
+                        }
+                    }
+                    break;
+                case 4:
+                    for (Competition competition : competitions) {
+                        if (competition instanceof CoupeNational && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(competition.toString());
+                        }
+                    }
+                    break;
+                case 5:
+                    for (Competition competition : competitions) {
+                        if (competition instanceof CoupeDeLaLigue && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(competition.toString());
+                        }
+                    }
+                    break;
+            }
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void Montrer(String chemin) {
-        jPanel3.removeAll();    
+        jPanel3.removeAll();
         File file = new File(chemin);
-        ImagePanel p = new ImagePanel(file);          
-        p.setSize(p.getWidth(), p.getHeight());             
-        jPanel3.setSize(p.getWidth(), p.getHeight());               
-        jPanel3.add(p);                                   
-        jPanel3.repaint(10);                           
+        ImagePanel p = new ImagePanel(file);
+        p.setSize(p.getWidth(), p.getHeight());
+        jPanel3.setSize(p.getWidth(), p.getHeight());
+        jPanel3.add(p);
+        jPanel3.repaint(10);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane jTextPane1;
+    private java.awt.Label label;
     private java.awt.Label label1;
-    private java.awt.Label label2;
-    private java.awt.Label label3;
-    private java.awt.List list1;
     // End of variables declaration//GEN-END:variables
 }

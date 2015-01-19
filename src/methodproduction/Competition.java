@@ -27,6 +27,12 @@ public abstract class Competition implements Simulation {
         tmp=new ArrayList<>();
     }
 
+    public ArrayList<Equipe> getEquipes() {
+        return equipes;
+    }
+    
+    
+
     public void setEquipes(ArrayList<Equipe> equipes) {
         this.equipes = equipes;
     }
@@ -61,7 +67,23 @@ public abstract class Competition implements Simulation {
         }
         equipes.remove(equipeA);
         equipes.remove(equipeB);
-        scores.add(equipeA.getNomEquipe()+" "+scoreA+" - "+scoreB+" "+equipeB.getNomEquipe());
+        
+        String offset = "";
+        if (equipeA.getNomEquipe().length() > equipeB.getNomEquipe().length()) {
+            for (int i = 0; i < equipeA.getNomEquipe().length() - equipeB.getNomEquipe().length(); i++) {
+                offset += " ";
+            }
+            scores.add(equipeA.getNomEquipe() + " " + scoreA + " - " + scoreB + " " + equipeB.getNomEquipe() + offset);
+        } else if (equipeA.getNomEquipe().length() < equipeB.getNomEquipe().length()) {
+            for (int i = 0; i < equipeB.getNomEquipe().length() - equipeA.getNomEquipe().length(); i++) {
+                offset += " ";
+            }
+            scores.add(offset + equipeA.getNomEquipe() + " " + scoreA + " - " + scoreB + " " + equipeB.getNomEquipe());
+
+        } else {
+
+            scores.add(equipeA.getNomEquipe() + " " + scoreA + " - " + scoreB + " " + equipeB.getNomEquipe());
+        }
     }
 
     @Override

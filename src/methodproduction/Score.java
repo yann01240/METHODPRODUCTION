@@ -58,7 +58,22 @@ public class Score {
 
     @Override
     public String toString() {
-        return equipeA.getNomEquipe() + " " + scoreA + " - " + scoreB + " " + equipeB.getNomEquipe();
+        String offset = "";
+        if (equipeA.getNomEquipe().length() > equipeB.getNomEquipe().length()) {
+            for (int i = 0; i < equipeA.getNomEquipe().length() - equipeB.getNomEquipe().length() - 1; i++) {
+                offset += " ";
+            }
+            return equipeA.getNomEquipe() + " " + scoreA + " - " + scoreB + " " + equipeB.getNomEquipe() + offset;
+        } else if (equipeA.getNomEquipe().length() < equipeB.getNomEquipe().length()) {
+            for (int i = 0; i < equipeB.getNomEquipe().length() - equipeA.getNomEquipe().length() - 1; i++) {
+                offset += " ";
+            }
+            return offset + equipeA.getNomEquipe() + " " + scoreA + " - " + scoreB + " " + equipeB.getNomEquipe();
+
+        } else {
+
+            return equipeA.getNomEquipe() + " " + scoreA + " - " + scoreB + " " + equipeB.getNomEquipe();
+        }
     }
 
 }

@@ -17,8 +17,4 @@ public class Division2 extends Championnat {
         super(Requetes.getPaysDivisionEquipe(pays,2));
     }
 
-    @Override
-    public void simulation() {
-        
-    }
 }

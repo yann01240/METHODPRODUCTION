@@ -19,8 +19,17 @@ public class CoupeDeLaLigue extends Coupe {
 
     @Override
     public String toString() {
-        String resultat = "Coupe de la Ligue de "+equipes.get(0).getNationEquipe()+"\n"
-                + "==================================================================================\n";
+        int max = 0;
+        for (String score : scores) {
+            if (score.length()>max){
+                max=score.length();
+            }
+        }
+        String ligne = "";
+        for (int i = 0; i < max+2; i++) {
+                ligne+="=";
+            }
+        String resultat = "Coupe de la Ligue de "+equipes.get(0).getNationEquipe()+"\n"+ligne + "\n";
         for (String score : scores) {
             resultat += score + "\n";
         }

@@ -14,6 +14,7 @@ import packModele.Requetes;
  * @author yann01240
  */
 public class Division1 extends Championnat {
+    
 
     public Division1(String pays) {
         super(Requetes.getPaysDivisionEquipe(pays, 1));

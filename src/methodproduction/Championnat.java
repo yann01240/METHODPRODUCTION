@@ -16,30 +16,27 @@ import packModele.Equipe;
  */
 public abstract class Championnat extends National {
 
-    private Score[][] matchs;
     private ArrayList<Equipe>[] jours;
     private ArrayList<Score>[] journees;
 
     public Championnat(ArrayList<Equipe> equipes) {
         super(equipes);
-        if (equipes.size()%2!=0) {
-            equipes.remove((int)(Math.random()*equipes.size()));
-        }
-        matchs = new Score[equipes.size()][equipes.size()];
-        for (int i = 0; i < equipes.size(); i++) {
-            for (int j = 0; j < equipes.size(); j++) {
-                matchs[i][j] = null;
-            }
+        if (this.equipes.size()%2!=0) {
+            this.equipes.remove((int)(Math.random()*this.equipes.size()));
         }
 
-        jours = new ArrayList[(equipes.size() - 1) * 2];
-        journees = new ArrayList[(equipes.size() - 1) * 2];
+        jours = new ArrayList[(this.equipes.size() - 1)];
+        journees = new ArrayList[(this.equipes.size() - 1) * 2];
+        
         for (int i = 0; i < jours.length; i++) {
             jours[i] = new ArrayList<>();
+        }
+        
+        for (int i = 0; i < journees.length; i++) {
             journees[i] = new ArrayList<>();
         }
-        jours[0].addAll(equipes);
-
+        
+        jours[0].addAll(this.equipes);
         for (int i = 1; i < jours.length; i++) {
             jours[i].addAll(jours[i - 1]);
             jours[i].add(jours[i].get(1));
@@ -65,29 +62,40 @@ public abstract class Championnat extends National {
 
     @Override
     public void simulation() {
-        int a = 0;
         repartition();
         for (int i = 0; i < journees.length; i++) {
             for (int j = 0; j < journees[i].size(); j++) {
                 match(journees[i].get(j));
             }
         }
-        
         Collections.sort(equipes, new EquipeComparator());
     }
 
     @Override
     public String classement() {
-        String resultat = "Classement Championnat de "+equipes.get(0).getNationEquipe()+" de Division "+equipes.get(0).getDivision()+"\n"
-                + "==================================================================================\n";
+        int max = 10;
+        String ligne = "";
+        for (int i = 0; i < max+2; i++) {
+                ligne+="=";
+            }
+        String resultat = "Classement Championnat de "+equipes.get(0).getNationEquipe()+" de Division "+equipes.get(0).getDivision()+"\n"+ligne + "\n";
         for (Equipe equipe : equipes) {
             resultat += equipe.getNomEquipe()+" "+equipe.getPoint()+"pts\n";
+        }
+        resultat += "\nMatchs\n"+ligne+"\n";
+        for (int i = 0; i < journees.length; i++) {
+            Collections.shuffle(journees[i],new Random(System.nanoTime()));
+            resultat += "Journee " + (i + 1) + ":\n";
+            for (Score match : journees[i]) {
+                resultat += match + "\n";
+            }
+            resultat += "\n";
         }
         return resultat;
     }
 
     public String scoreString() {
-        String resultat = "";
+        String resultat = "Match:";
         for (int i = 0; i < journees.length; i++) {
             Collections.shuffle(journees[i],new Random(System.nanoTime()));
             resultat += "Journee " + (i + 1) + ":\n";
@@ -100,35 +108,19 @@ public abstract class Championnat extends National {
     }
 
     public void repartition() {
-        for (int i = 0; i < journees.length / 2; i++) {
+        for (int i = 0; i < jours.length; i++) {
             while (!jours[i].isEmpty()) {
                 journees[i].add(new Score(jours[i].get(0), 0, jours[i].get(jours[i].size() - 1), 0));
-                journees[i + journees.length / 2].add(new Score(jours[i].get(jours[i].size() - 1), 0, jours[i].get(0), 0));
+                journees[i + jours.length].add(new Score(jours[i].get(jours[i].size() - 1), 0, jours[i].get(0), 0));
                 jours[i].remove(0);
                 jours[i].remove(jours[i].size() - 1);
             }
         }
     }
 
-    public void matchJournee(Score match, int indice) {
-        if (indice < jours.length) {
-            if (match != null) {
-                if (jours[indice].size() <= equipes.size() && journees[indice].size() <= equipes.size() / 2) {
-                    if (!jours[indice].contains(match.getEquipeA()) && !jours[indice].contains(match.getEquipeB())) {
-                        journees[indice].add(match);
-                        jours[indice].add(match.getEquipeA());
-                        jours[indice].add(match.getEquipeB());
-                        return;
-                    }
-                }
-                matchJournee(match, indice + 1);
-            }
-        }
-    }
-
     @Override
     public String toString() {
-        return scoreString();
+        return classement();
     }
 
 }
