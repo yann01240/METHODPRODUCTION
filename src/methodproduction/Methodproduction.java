@@ -5,6 +5,7 @@
  */
 package methodproduction;
 
+import java.util.ArrayList;
 import packVue.MaFenetre;
 
 /**
