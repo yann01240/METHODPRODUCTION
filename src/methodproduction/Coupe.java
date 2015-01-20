@@ -14,8 +14,8 @@ import java.util.ArrayList;
  */
 public abstract class Coupe extends National {
 
-    public Coupe(ArrayList<Equipe> equipes) {
-        super(equipes);
+    public Coupe(ArrayList<Equipe> equipes, String pays) {
+        super(equipes, pays);
     }
 
 }

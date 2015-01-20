@@ -17,7 +17,7 @@ public class Division1 extends Championnat {
     
 
     public Division1(String pays) {
-        super(Requetes.getPaysDivisionEquipe(pays, 1));
+        super(Requetes.getPaysDivisionEquipe(pays, 1),pays);
     }
 
     @Override

@@ -35,8 +35,8 @@ public class MaFenetre extends javax.swing.JFrame {
      * Creates new form MaFenetre
      */
     ArrayList<Competition> competitions = new ArrayList<>();
-    
-        Vector<String> list = new Vector();
+
+    Vector<String> list = new Vector();
 
     public MaFenetre() {
         initComponents();
@@ -203,49 +203,7 @@ public class MaFenetre extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        if (jComboBox3.getSelectedIndex() < 2 && jComboBox3.getSelectedIndex() >= 0) {
-            jComboBox1.setEnabled(false);
-            jComboBox1.setSelectedIndex(-1);
-            jTextPane1.setText(competitions.get(competitions.size() - 1 - jComboBox3.getSelectedIndex()).toString());
-        } else if (jComboBox3.getSelectedIndex() < 0) {
-            jTextPane1.setText("");
-        } else if (jComboBox3.getSelectedIndex() >= 2 && jComboBox3.getSelectedIndex() < 6 && jComboBox1.getSelectedIndex() < 0) {
-            jTextPane1.setText("");
-            jComboBox1.setEnabled(true);
-        } else if (jComboBox3.getSelectedIndex() >= 2 && jComboBox3.getSelectedIndex() < 6 && jComboBox1.getSelectedIndex() >= 0) {
-            
-            switch (jComboBox3.getSelectedIndex()) {
-                case 2:
-                    for (Competition competition : competitions) {
-                        if (competition instanceof Division1 && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                            jTextPane1.setText(competition.toString());
-                        }
-                    }
-                    break;
-                case 3:
-                    for (Competition competition : competitions) {
-                        if (competition instanceof Division2 && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                            jTextPane1.setText(competition.toString());
-                        }
-                    }
-                    break;
-                case 4:
-                    for (Competition competition : competitions) {
-                        if (competition instanceof CoupeNational && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                            jTextPane1.setText(competition.toString());
-                        }
-                    }
-                    break;
-                case 5:
-                    for (Competition competition : competitions) {
-                        if (competition instanceof CoupeDeLaLigue && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                            jTextPane1.setText(competition.toString());
-                        }
-                    }
-                    break;
-            }
-        }
-
+        test();
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -305,6 +263,10 @@ public class MaFenetre extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        test();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void test(){
         if (jComboBox3.getSelectedIndex() < 2 && jComboBox3.getSelectedIndex() >= 0) {
             jComboBox1.setEnabled(false);
             jComboBox1.setSelectedIndex(-1);
@@ -315,40 +277,39 @@ public class MaFenetre extends javax.swing.JFrame {
             jTextPane1.setText("");
             jComboBox1.setEnabled(true);
         } else if (jComboBox3.getSelectedIndex() >= 2 && jComboBox3.getSelectedIndex() < 6 && jComboBox1.getSelectedIndex() >= 0) {
-            
+
             switch (jComboBox3.getSelectedIndex()) {
                 case 2:
-                    for (Competition competition : competitions) {
-                        if (competition instanceof Division1 && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                            jTextPane1.setText(competition.toString());
+                    for (int i = 0; i < competitions.size(); i++) {
+                        if (competitions.get(i) instanceof Division1 && competitions.get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(competitions.get(i).toString());
                         }
                     }
                     break;
                 case 3:
-                    for (Competition competition : competitions) {
-                        if (competition instanceof Division2 && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                            jTextPane1.setText(competition.toString());
+                    for (int i = 0; i < competitions.size(); i++) {
+                        if (competitions.get(i) instanceof Division2 && competitions.get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(competitions.get(i).toString());
                         }
                     }
                     break;
                 case 4:
-                    for (Competition competition : competitions) {
-                        if (competition instanceof CoupeNational && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                            jTextPane1.setText(competition.toString());
-                        }
+                    for (int i = 0; i < competitions.size(); i++) {
+                            if (competitions.get(i) instanceof CoupeDeLaLigue && competitions.get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                                jTextPane1.setText(competitions.get(i).toString());
+                            }
                     }
                     break;
                 case 5:
-                    for (Competition competition : competitions) {
-                        if (competition instanceof CoupeDeLaLigue && competition.getEquipes().get(0).getNationEquipe().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                            jTextPane1.setText(competition.toString());
+                    for (int i = 0; i < competitions.size(); i++) {
+                        if (competitions.get(i) instanceof CoupeNational && competitions.get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(competitions.get(i).toString());
                         }
                     }
                     break;
             }
         }
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
+    }
     private void Montrer(String chemin) {
         jPanel3.removeAll();
         File file = new File(chemin);

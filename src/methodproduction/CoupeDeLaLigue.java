@@ -14,7 +14,7 @@ import packModele.Requetes;
 public class CoupeDeLaLigue extends Coupe {
 
     public CoupeDeLaLigue(String pays) {
-        super(Requetes.getPaysEquipe(pays));
+        super(Requetes.getCoupeLigueEquipe(pays),pays);
     }
 
     @Override

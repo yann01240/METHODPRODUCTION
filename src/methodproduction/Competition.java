@@ -19,9 +19,11 @@ public abstract class Competition implements Simulation {
     private ArrayList<Equipe> tmp;
     ArrayList<Equipe> equipes;
     ArrayList<String> scores;
+    String pays;
 
-    public Competition(ArrayList<Equipe> equipes) {
+    public Competition(ArrayList<Equipe> equipes, String pays) {
         this.equipes = equipes;
+        this.pays=pays;
         scores = new ArrayList<>();
         Collections.shuffle(this.equipes,new Random(System.nanoTime()));
         tmp=new ArrayList<>();
@@ -31,7 +33,9 @@ public abstract class Competition implements Simulation {
         return equipes;
     }
     
-    
+    public String getPays() {
+        return pays;
+    }
 
     public void setEquipes(ArrayList<Equipe> equipes) {
         this.equipes = equipes;

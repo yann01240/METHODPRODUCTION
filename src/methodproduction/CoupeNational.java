@@ -15,7 +15,7 @@ public class CoupeNational extends Coupe {
 
 
     public CoupeNational(String pays) {
-        super(Requetes.getPaysEquipe(pays));
+        super(Requetes.getCoupeNationalEquipe(pays),pays);
     }
     
     @Override

@@ -13,10 +13,9 @@ import java.util.ArrayList;
  * @author yann01240
  */
 public abstract class National extends Competition {
-    String pays;
-
-    public National(ArrayList<Equipe> equipes) {
-        super(equipes);
+    
+    public National(ArrayList<Equipe> equipes, String pays) {
+        super(equipes, pays);
     }
 
     public String getPays() {

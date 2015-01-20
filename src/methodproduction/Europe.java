@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public abstract class Europe extends Competition {
 
     public Europe(ArrayList<Equipe> equipes) {
-        super(equipes);
+        super(equipes,null);
     }
 
 }

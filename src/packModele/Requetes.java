@@ -21,7 +21,22 @@ public class Requetes {
         }
     }
     
-    public static ArrayList<Equipe> getPaysEquipe(String pays) {
+    public static ArrayList<Equipe> getCoupeNationalEquipe(String pays) {
+        try {
+            ArrayList<Equipe> list = new ArrayList();
+            Statement st = ConnexionBD.getConnexion().createStatement();
+            ResultSet rs = st.executeQuery("select * from `equipe` where nom_pays like '"+pays+"' and (division=1 or division=2);");
+            
+            while (rs.next()) {
+                list.add(new Equipe(rs.getString("nom_equipe"), pays, rs.getInt("division")));
+            }
+            return list;
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+    
+    public static ArrayList<Equipe> getCoupeLigueEquipe(String pays) {
         try {
             ArrayList<Equipe> list = new ArrayList();
             Statement st = ConnexionBD.getConnexion().createStatement();

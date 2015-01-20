@@ -19,8 +19,8 @@ public abstract class Championnat extends National {
     private ArrayList<Equipe>[] jours;
     private ArrayList<Score>[] journees;
 
-    public Championnat(ArrayList<Equipe> equipes) {
-        super(equipes);
+    public Championnat(ArrayList<Equipe> equipes, String pays) {
+        super(equipes, pays);
         if (this.equipes.size()%2!=0) {
             this.equipes.remove((int)(Math.random()*this.equipes.size()));
         }
