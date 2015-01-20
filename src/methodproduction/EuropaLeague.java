@@ -8,8 +8,17 @@ import packModele.Equipe;
 //			EuropaLeague
 // ---------------------------------------------------------------
 
+/**
+ *
+ * @author JOYARD_LEROUX_CHAVEL_CHARPY
+ */
+
+
 public class EuropaLeague extends Europe {
 
+    /**
+     * Constucteur de Europaleague
+     */
     public EuropaLeague() {
         super(new ArrayList<Equipe>());
     }

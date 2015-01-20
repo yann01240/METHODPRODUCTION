@@ -12,11 +12,22 @@ import packModele.Equipe;
 //			Cette classe regroupe Division 1 et 2 
 // ---------------------------------------------------------------
 
+/**
+ *
+ * @author JOYARD_LEROUX_CHAVEL_CHARPY
+ */
+
+
 public abstract class Championnat extends National {
 
     private ArrayList<Equipe>[] jours;
     private ArrayList<Score>[] journees;
 
+    /**
+     *
+     * @param equipes
+     * @param pays
+     */
     public Championnat(ArrayList<Equipe> equipes, String pays) {
         super(equipes, pays);
         if (this.equipes.size() % 2 != 0) {
@@ -42,7 +53,10 @@ public abstract class Championnat extends National {
         }
     }
     
-
+    /**
+     *
+     * @param match
+     */
     public void match(Score match) {
         int scoreA = (int) (Math.random() * 5), scoreB = (int) (Math.random() * 5);
         Equipe equipeA = match.getEquipeA(), equipeB = match.getEquipeB();
@@ -59,6 +73,9 @@ public abstract class Championnat extends National {
 
     }
 
+    /**
+     * Fonction pour la simulation des matchs
+     */
     @Override
     public void simulation() {
         repartition();
@@ -74,6 +91,11 @@ public abstract class Championnat extends National {
 //			Classement
 // ---------------------------------------------------------------
     
+    /**
+     *
+     * @return le classement des equipes selon leurs points
+     */
+        
     @Override
     public String classement() {
         int max = 10;
@@ -97,19 +119,10 @@ public abstract class Championnat extends National {
         return resultat;
     }
 
-    public String scoreString() {
-        String resultat = "Match:";
-        for (int i = 0; i < journees.length; i++) {
-            Collections.shuffle(journees[i], new Random(System.nanoTime()));
-            resultat += "Journee " + (i + 1) + ":\n";
-            for (Score match : journees[i]) {
-                resultat += match + "\n";
-            }
-            resultat += "\n";
-        }
-        return resultat;
-    }
 
+    /**
+     * Repartition des matchs
+     */
     public void repartition() {
         for (int i = 0; i < jours.length; i++) {
             while (!jours[i].isEmpty()) {

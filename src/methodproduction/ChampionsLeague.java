@@ -9,8 +9,16 @@ import packModele.Equipe;
 //			La Ligue des Champions
 // ---------------------------------------------------------------
 
+/**
+ *
+ * @author JOYARD_LEROUX_CHAVEL_CHARPY
+ */
+
 public class ChampionsLeague extends Europe {
 
+    /**
+     * Ligues des Champions
+     */
     public ChampionsLeague() {
         super(new ArrayList<Equipe>());
     }

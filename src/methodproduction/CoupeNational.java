@@ -7,9 +7,18 @@ import packModele.Requetes;
 //			Coupe National
 // ---------------------------------------------------------------
 
+/**
+ *
+ * @author JOYARD_LEROUX_CHAVEL_CHARPY
+ */
+
+
 public class CoupeNational extends Coupe {
 
-
+    /**
+     *
+     * @param pays
+     */
     public CoupeNational(String pays) {
         super(Requetes.getCoupeNationalEquipe(pays),pays);
     }

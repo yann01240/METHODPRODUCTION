@@ -37,6 +37,9 @@ public class MaFenetre extends javax.swing.JFrame {
 
     Vector<String> list = new Vector();
 
+    /**
+     *
+     */
     public MaFenetre() {
         initComponents();
         saison = new Saison();

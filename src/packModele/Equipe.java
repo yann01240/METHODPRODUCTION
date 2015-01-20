@@ -7,8 +7,10 @@ package packModele;
 
 /**
  *
- * @author yann01240
+ * @author JOYARD_LEROUX_CHAVEL_CHARPY
  */
+
+
 public class Equipe {
 
     private String nomEquipe;
@@ -16,6 +18,12 @@ public class Equipe {
     private int division;
     private int point;
 
+    /**
+     *
+     * @param nom
+     * @param nationEquipe
+     * @param division
+     */
     public Equipe(String nom, String nationEquipe, int division) {
         this.nomEquipe = nom;
         this.nationEquipe = nationEquipe;
@@ -23,34 +31,66 @@ public class Equipe {
         point = 0;
     }
 
+    /**
+     *
+     * @return Récupérer les noms des équipes
+     */
     public String getNomEquipe() {
         return nomEquipe;
     }
 
+    /**
+     *
+     * @param nomEquipe
+     */
     public void setNomEquipe(String nomEquipe) {
         this.nomEquipe = nomEquipe;
     }
 
+    /**
+     *
+     * @return Récupérer la liste des nations des équipes
+     */
     public String getNationEquipe() {
         return nationEquipe;
     }
 
+    /**
+     *
+     * @param nationEquipe
+     */
     public void setNationEquipe(String nationEquipe) {
         this.nationEquipe = nationEquipe;
     }
 
+    /**
+     *
+     * @return le nombre de point
+     */
     public int getPoint() {
         return point;
     }
 
+    /**
+     *
+     * @param point
+     */
     public void setPoint(int point) {
         this.point = point;
     }
 
+    /**
+     *
+     * @return la division
+     */
     public int getDivision() {
         return division;
     }
 
+    /**
+     *
+     * @param division
+     */
     public void setDivision(int division) {
         this.division = division;
     }
@@ -75,6 +115,11 @@ public class Equipe {
 
     }
 
+    /**
+     *
+     * @param equipe
+     * @return
+     */
     public int compareTo(Equipe equipe) {
         return new Integer(this.point).compareTo(equipe.point);
     }

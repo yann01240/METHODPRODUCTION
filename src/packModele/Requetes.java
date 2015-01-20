@@ -4,8 +4,17 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author JOYARD_LEROUX_CHAVEL_CHARPY
+ */
+
 public class Requetes {
     
+    /**
+     *
+     * @return la liste de toutes les équipes 
+     */
     public static ArrayList<Equipe> getAllEquipe() {
         try {
             ArrayList<Equipe> list = new ArrayList();
@@ -21,6 +30,11 @@ public class Requetes {
         }
     }
     
+    /**
+     *
+     * @param pays
+     * @return
+     */
     public static ArrayList<Equipe> getCoupeLigueEquipe(String pays) {
         try {
             ArrayList<Equipe> list = new ArrayList();
@@ -36,6 +50,11 @@ public class Requetes {
         }
     }
     
+    /**
+     *
+     * @param pays
+     * @return
+     */
     public static ArrayList<Equipe> getCoupeNationalEquipe(String pays) {
         try {
             ArrayList<Equipe> list = new ArrayList();
@@ -51,6 +70,12 @@ public class Requetes {
         }
     }
     
+    /**
+     *
+     * @param pays
+     * @param division
+     * @return
+     */
     public static ArrayList<Equipe> getPaysDivisionEquipe(String pays, int division) {
         try {
             ArrayList<Equipe> list = new ArrayList();

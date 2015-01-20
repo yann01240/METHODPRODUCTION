@@ -1,20 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package packModele;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ *
+ * @author JOYARD_LEROUX_CHAVEL_CHARPY
+ */
+
 public class ConnexionBD {
     private static Connection connect = null;
 
     
     //Connexion a la base de donnée "scaryShop.sqlite"
-    public ConnexionBD() {
+
+    /**
+     *
+     */
+        public ConnexionBD() {
         if (connect == null) {
             try {
                 Class.forName("org.sqlite.JDBC").newInstance();
@@ -31,7 +36,12 @@ public class ConnexionBD {
     
 
     //Fonction qui vérifie la connexion
-    public static Connection getConnexion() {
+
+    /**
+     *
+     * @return
+     */
+        public static Connection getConnexion() {
         if (connect == null) {
             ConnexionBD connexionBD = new ConnexionBD();
             System.out.println("Connexion etablie");

@@ -2,11 +2,15 @@
 package packModele;
 
 import java.util.Comparator;
-import packModele.Equipe;
 
 // ---------------------------------------------------------------
 //  Cette classe permet de comparé 2 équipes entre elles pour faire classement
 // ---------------------------------------------------------------
+
+/**
+ *
+ * @author JOYARD_LEROUX_CHAVEL_CHARPY
+ */
 
 public class EquipeComparator implements Comparator<Equipe> {
 

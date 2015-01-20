@@ -7,8 +7,13 @@ import packModele.Requetes;
 //			Coupe de la Ligue
 // ---------------------------------------------------------------
 
+
 public class CoupeDeLaLigue extends Coupe {
 
+    /**
+     *
+     * @param pays
+     */
     public CoupeDeLaLigue(String pays) {
         super(Requetes.getCoupeLigueEquipe(pays),pays);
     }

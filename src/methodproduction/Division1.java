@@ -9,13 +9,26 @@ import packModele.Requetes;
 //			Division 1
 // ---------------------------------------------------------------
 
+/**
+ *
+ * @author JOYARD_LEROUX_CHAVEL_CHARPY
+ */
+
+
 public class Division1 extends Championnat {
     
-
+    /**
+     *
+     * @param pays
+     */
     public Division1(String pays) {
         super(Requetes.getPaysDivisionEquipe(pays, 1),pays);
     }
 
+    /**
+     *
+     * @return les 4, 5 et 6eme équipes de la division 1 
+     */
     @Override
     public ArrayList<Equipe> selectionEuropa() {
         ArrayList<Equipe> tmp = new ArrayList<>();
@@ -25,6 +38,10 @@ public class Division1 extends Championnat {
         return tmp;
     }
 
+    /**
+     *
+     * @return les 1, 2 et 3eme équipes de la division 1 
+     */
     @Override
     public ArrayList<Equipe> selectionChampions() {
         ArrayList<Equipe> tmp = new ArrayList<>();

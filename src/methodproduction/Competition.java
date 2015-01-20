@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package methodproduction;
 
 import packModele.Equipe;
@@ -14,6 +10,10 @@ import java.util.Random;
 //           La classe mère de toutes les competitions (coupes/championnat) 
 // ----------------------------------------------------------------------------------
 
+/**
+ *
+ * @author JOYARD_LEROUX_CHAVEL_CHARPY
+ */
 
 public abstract class Competition implements Simulation {
 
@@ -22,6 +22,11 @@ public abstract class Competition implements Simulation {
     ArrayList<String> scores;
     String pays;
 
+    /**
+     *
+     * @param equipes
+     * @param pays
+     */
     public Competition(ArrayList<Equipe> equipes, String pays) {
         this.equipes = equipes;
         this.pays=pays;
@@ -30,36 +35,66 @@ public abstract class Competition implements Simulation {
         tmp=new ArrayList<>();
     }
 
+    /**
+     *
+     * @return une equipe
+     */
     public ArrayList<Equipe> getEquipes() {
         return equipes;
     }
     
+    /**
+     *
+     * @return un pays
+     */
     public String getPays() {
         return pays;
     }
 
+    /**
+     *
+     * @param equipes
+     */
     public void setEquipes(ArrayList<Equipe> equipes) {
         this.equipes = equipes;
     }
 
+    /**
+     *
+     * @param equipe
+     */
     public void addEquipe(Equipe equipe) {
         this.equipes.add(equipe);
     }
     
+    /**
+     *
+     * @param equipes
+     */
     public void addAllEquipes(ArrayList<Equipe> equipes) {
         this.equipes.addAll(equipes);
     }
 
+    /**
+     *
+     * @param equipe
+     */
     public void removeEquipe(Equipe equipe) {
         this.equipes.remove(equipe);
     }
 
+    /**
+     * Vider la liste d'équipes
+     */
     public void clearEquipes() {
         this.equipes.clear();
     }
 
-    
-
+    /**
+     *
+     * @param equipeA
+     * @param equipeB
+     */
     public void match(Equipe equipeA, Equipe equipeB) {
         int scoreA = (int) (Math.random() * 6), scoreB = (int) (Math.random() * 6);
         while(scoreA==scoreB){
@@ -91,6 +126,9 @@ public abstract class Competition implements Simulation {
         }
     }
 
+    /**
+     * Simule la disposition des équipes
+     */
     @Override
     public void simulation() {
         parcours();
@@ -101,6 +139,9 @@ public abstract class Competition implements Simulation {
         }
     }
 
+    /**
+     * Simule le parcours des équipes dans la phase final
+     */
     public void parcours() {
         if (equipes.size() >= 2) {
             match(equipes.get(0), equipes.get(1));
@@ -108,12 +149,24 @@ public abstract class Competition implements Simulation {
         }
     }
     
+    /**
+     *
+     * @return les 4 5 6eme équipes de la division 1
+     */
     @Override
     public ArrayList<Equipe> selectionEuropa(){return null;}
     
+    /**
+     *
+     * @return les 1,  2 et 3eme équipes de la division 1
+     */
     @Override
     public ArrayList<Equipe> selectionChampions(){return null;}
     
+    /**
+     *
+     * @return le Classement 
+     */
     @Override
     public String classement(){return null;}
     

@@ -20,6 +20,10 @@ public class ImagePanel extends JPanel {
 
     private BufferedImage image;
 
+    /**
+     *
+     * @param fileImg
+     */
     public ImagePanel(File fileImg) {
         super();
         try {
