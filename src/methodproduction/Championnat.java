@@ -1,5 +1,7 @@
 package methodproduction;
 
+import packModele.Score;
+import packModele.EquipeComparator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;

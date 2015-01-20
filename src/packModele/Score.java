@@ -1,5 +1,5 @@
 
-package methodproduction;
+package packModele;
 
 import packModele.Equipe;
 

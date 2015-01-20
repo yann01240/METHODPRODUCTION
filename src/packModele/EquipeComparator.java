@@ -1,5 +1,5 @@
 
-package methodproduction;
+package packModele;
 
 import java.util.Comparator;
 import packModele.Equipe;

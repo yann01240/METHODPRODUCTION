@@ -18,6 +18,12 @@ public class Saison {
         this.competitions = competitions;
     }
 
+    public ArrayList<Competition> getCompetitions() {
+        return competitions;
+    }
+    
+    
+    
     public void setCompetitions(ArrayList<Competition> competitions) {
         this.competitions = competitions;
     }

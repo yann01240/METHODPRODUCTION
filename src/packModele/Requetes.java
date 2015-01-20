@@ -21,7 +21,7 @@ public class Requetes {
         }
     }
     
-    public static ArrayList<Equipe> getCoupeNationalEquipe(String pays) {
+    public static ArrayList<Equipe> getCoupeLigueEquipe(String pays) {
         try {
             ArrayList<Equipe> list = new ArrayList();
             Statement st = ConnexionBD.getConnexion().createStatement();
@@ -36,7 +36,7 @@ public class Requetes {
         }
     }
     
-    public static ArrayList<Equipe> getCoupeLigueEquipe(String pays) {
+    public static ArrayList<Equipe> getCoupeNationalEquipe(String pays) {
         try {
             ArrayList<Equipe> list = new ArrayList();
             Statement st = ConnexionBD.getConnexion().createStatement();

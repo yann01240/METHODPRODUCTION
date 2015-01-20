@@ -5,13 +5,11 @@
  */
 package packVue;
 
-import java.awt.Component;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
-import javax.swing.JTextPane;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -23,6 +21,7 @@ import methodproduction.CoupeNational;
 import methodproduction.Division1;
 import methodproduction.Division2;
 import methodproduction.EuropaLeague;
+import methodproduction.Saison;
 import packModele.ConnexionBD;
 
 /**
@@ -34,12 +33,13 @@ public class MaFenetre extends javax.swing.JFrame {
     /**
      * Creates new form MaFenetre
      */
-    ArrayList<Competition> competitions = new ArrayList<>();
+    Saison saison;
 
     Vector<String> list = new Vector();
 
     public MaFenetre() {
         initComponents();
+        saison = new Saison();
         try {
             Statement st = ConnexionBD.getConnexion().createStatement();
             ResultSet rs = st.executeQuery("select `nom_pays` from `equipe` group by `nom_pays` order by 1;");
@@ -56,6 +56,7 @@ public class MaFenetre extends javax.swing.JFrame {
         StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
         doc.setParagraphAttributes(0, 0, center, true);
         Montrer("logo.png");
+        this.setVisible(true);
     }
 
     /**
@@ -79,10 +80,12 @@ public class MaFenetre extends javax.swing.JFrame {
         jComboBox3 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Football Championship 2015");
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Football Championship 2015"));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Résultats"));
@@ -138,7 +141,7 @@ public class MaFenetre extends javax.swing.JFrame {
         label1.setForeground(new java.awt.Color(51, 51, 51));
         label1.setText("Selectionner votre compétition");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Champions League", "Europa League", "Division 1", "Division 2", "Coupe Nationale", "Coupe de la Ligue" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Champions League", "Europa League", "Division 1", "Division 2", "Coupe de la Ligue", "Coupe Nationale" }));
         jComboBox3.setSelectedIndex(-1);
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,40 +154,42 @@ public class MaFenetre extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jComboBox3, 0, 150, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox3)
-                            .addComponent(label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBox1)
                             .addComponent(label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(140, 140, 140)))
+                        .addGap(0, 113, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -196,8 +201,10 @@ public class MaFenetre extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jPanel1.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -214,48 +221,48 @@ public class MaFenetre extends javax.swing.JFrame {
         jComboBox1.setSelectedIndex(-1);
 
         jComboBox3.setSelectedIndex(-1);
-        competitions.clear();
+        saison.getCompetitions().clear();
 
         try {
             Statement st = ConnexionBD.getConnexion().createStatement();
             ResultSet rs = st.executeQuery("select `nom_pays` from `equipe` group by `nom_pays` order by 1;");
             while (rs.next()) {
                 try {
-                    competitions.add(new Division1(rs.getString("nom_pays")));
-                    competitions.get(competitions.size() - 1).simulation();
+                    saison.addCompetition(new Division1(rs.getString("nom_pays")));
+                    saison.getCompetitions().get(saison.getCompetitions().size() - 1).simulation();
                 } catch (Exception e) {
-                    competitions.remove(competitions.size() - 1);
+                    saison.removeCompetition(saison.getCompetitions().get(saison.getCompetitions().size() - 1));
                 }
                 try {
-                    competitions.add(new Division2(rs.getString("nom_pays")));
-                    competitions.get(competitions.size() - 1).simulation();
+                    saison.addCompetition(new Division2(rs.getString("nom_pays")));
+                    saison.getCompetitions().get(saison.getCompetitions().size() - 1).simulation();
                 } catch (Exception e) {
-                    competitions.remove(competitions.size() - 1);
+                    saison.removeCompetition(saison.getCompetitions().get(saison.getCompetitions().size() - 1));
                 }
                 try {
-                    competitions.add(new CoupeDeLaLigue(rs.getString("nom_pays")));
-                    competitions.get(competitions.size() - 1).simulation();
+                    saison.addCompetition(new CoupeDeLaLigue(rs.getString("nom_pays")));
+                    saison.getCompetitions().get(saison.getCompetitions().size() - 1).simulation();
                 } catch (Exception e) {
-                    competitions.remove(competitions.size() - 1);
+                    saison.removeCompetition(saison.getCompetitions().get(saison.getCompetitions().size() - 1));
                 }
                 try {
-                    competitions.add(new CoupeNational(rs.getString("nom_pays")));
-                    competitions.get(competitions.size() - 1).simulation();
+                    saison.addCompetition(new CoupeNational(rs.getString("nom_pays")));
+                    saison.getCompetitions().get(saison.getCompetitions().size() - 1).simulation();
                 } catch (Exception e) {
-                    competitions.remove(competitions.size() - 1);
+                    saison.removeCompetition(saison.getCompetitions().get(saison.getCompetitions().size() - 1));
                 }
             }
-            competitions.add(new EuropaLeague());
-            competitions.add(new ChampionsLeague());
-            for (Competition competition : competitions) {
+            saison.addCompetition(new EuropaLeague());
+            saison.addCompetition(new ChampionsLeague());
+            for (Competition competition : saison.getCompetitions()) {
                 try {
-                    competitions.get(competitions.size() - 1).addAllEquipes(competition.selectionChampions());
-                    competitions.get(competitions.size() - 2).addAllEquipes(competition.selectionEuropa());
+                    saison.getCompetitions().get(saison.getCompetitions().size() - 1).addAllEquipes(competition.selectionChampions());
+                    saison.getCompetitions().get(saison.getCompetitions().size() - 2).addAllEquipes(competition.selectionEuropa());
                 } catch (Exception e) {
                 }
             }
-            competitions.get(competitions.size() - 2).simulation();
-            competitions.get(competitions.size() - 1).simulation();
+            saison.getCompetitions().get(saison.getCompetitions().size() - 2).simulation();
+            saison.getCompetitions().get(saison.getCompetitions().size() - 1).simulation();
         } catch (Exception ex) {
         }
         jComboBox1.setEnabled(false);
@@ -270,7 +277,7 @@ public class MaFenetre extends javax.swing.JFrame {
         if (jComboBox3.getSelectedIndex() < 2 && jComboBox3.getSelectedIndex() >= 0) {
             jComboBox1.setEnabled(false);
             jComboBox1.setSelectedIndex(-1);
-            jTextPane1.setText(competitions.get(competitions.size() - 1 - jComboBox3.getSelectedIndex()).toString());
+            jTextPane1.setText(saison.getCompetitions().get(saison.getCompetitions().size() - 1 - jComboBox3.getSelectedIndex()).toString());
         } else if (jComboBox3.getSelectedIndex() < 0) {
             jTextPane1.setText("");
         } else if (jComboBox3.getSelectedIndex() >= 2 && jComboBox3.getSelectedIndex() < 6 && jComboBox1.getSelectedIndex() < 0) {
@@ -280,30 +287,30 @@ public class MaFenetre extends javax.swing.JFrame {
 
             switch (jComboBox3.getSelectedIndex()) {
                 case 2:
-                    for (int i = 0; i < competitions.size(); i++) {
-                        if (competitions.get(i) instanceof Division1 && competitions.get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                            jTextPane1.setText(competitions.get(i).toString());
+                    for (int i = 0; i < saison.getCompetitions().size(); i++) {
+                        if (saison.getCompetitions().get(i) instanceof Division1 && saison.getCompetitions().get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(saison.getCompetitions().get(i).toString());
                         }
                     }
                     break;
                 case 3:
-                    for (int i = 0; i < competitions.size(); i++) {
-                        if (competitions.get(i) instanceof Division2 && competitions.get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                            jTextPane1.setText(competitions.get(i).toString());
+                    for (int i = 0; i < saison.getCompetitions().size(); i++) {
+                        if (saison.getCompetitions().get(i) instanceof Division2 && saison.getCompetitions().get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(saison.getCompetitions().get(i).toString());
                         }
                     }
                     break;
                 case 4:
-                    for (int i = 0; i < competitions.size(); i++) {
-                            if (competitions.get(i) instanceof CoupeDeLaLigue && competitions.get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                                jTextPane1.setText(competitions.get(i).toString());
+                    for (int i = 0; i < saison.getCompetitions().size(); i++) {
+                            if (saison.getCompetitions().get(i) instanceof CoupeDeLaLigue && saison.getCompetitions().get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                                jTextPane1.setText(saison.getCompetitions().get(i).toString());
                             }
                     }
                     break;
                 case 5:
-                    for (int i = 0; i < competitions.size(); i++) {
-                        if (competitions.get(i) instanceof CoupeNational && competitions.get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
-                            jTextPane1.setText(competitions.get(i).toString());
+                    for (int i = 0; i < saison.getCompetitions().size(); i++) {
+                        if (saison.getCompetitions().get(i) instanceof CoupeNational && saison.getCompetitions().get(i).getPays().equals(list.get(jComboBox1.getSelectedIndex()))) {
+                            jTextPane1.setText(saison.getCompetitions().get(i).toString());
                         }
                     }
                     break;

@@ -3,7 +3,6 @@ package methodproduction;
 
 import java.util.ArrayList;
 import packModele.Equipe;
-import packModele.Requetes;
 
 
 // ---------------------------------------------------------------
