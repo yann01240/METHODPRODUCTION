@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-/**
- *
- * @author yann01240
- */
+// ----------------------------------------------------------------------------------
+//           La classe mère de toutes les competitions (coupes/championnat) 
+// ----------------------------------------------------------------------------------
+
+
 public abstract class Competition implements Simulation {
 
     private ArrayList<Equipe> tmp;

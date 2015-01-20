@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package methodproduction;
 
 import java.util.ArrayList;
@@ -10,10 +5,11 @@ import java.util.Collections;
 import java.util.Random;
 import packModele.Equipe;
 
-/**
- *
- * @author yann01240
- */
+
+// ---------------------------------------------------------------
+//			Cette classe regroupe Division 1 et 2 
+// ---------------------------------------------------------------
+
 public abstract class Championnat extends National {
 
     private ArrayList<Equipe>[] jours;
@@ -21,21 +17,21 @@ public abstract class Championnat extends National {
 
     public Championnat(ArrayList<Equipe> equipes, String pays) {
         super(equipes, pays);
-        if (this.equipes.size()%2!=0) {
-            this.equipes.remove((int)(Math.random()*this.equipes.size()));
+        if (this.equipes.size() % 2 != 0) {
+            this.equipes.remove((int) (Math.random() * this.equipes.size()));
         }
 
         jours = new ArrayList[(this.equipes.size() - 1)];
         journees = new ArrayList[(this.equipes.size() - 1) * 2];
-        
+
         for (int i = 0; i < jours.length; i++) {
             jours[i] = new ArrayList<>();
         }
-        
+
         for (int i = 0; i < journees.length; i++) {
             journees[i] = new ArrayList<>();
         }
-        
+
         jours[0].addAll(this.equipes);
         for (int i = 1; i < jours.length; i++) {
             jours[i].addAll(jours[i - 1]);
@@ -43,6 +39,7 @@ public abstract class Championnat extends National {
             jours[i].remove(1);
         }
     }
+    
 
     public void match(Score match) {
         int scoreA = (int) (Math.random() * 5), scoreB = (int) (Math.random() * 5);
@@ -71,20 +68,24 @@ public abstract class Championnat extends National {
         Collections.sort(equipes, new EquipeComparator());
     }
 
+// ---------------------------------------------------------------
+//			Classement
+// ---------------------------------------------------------------
+    
     @Override
     public String classement() {
         int max = 10;
         String ligne = "";
-        for (int i = 0; i < max+2; i++) {
-                ligne+="=";
-            }
-        String resultat = "Classement Championnat de "+equipes.get(0).getNationEquipe()+" de Division "+equipes.get(0).getDivision()+"\n"+ligne + "\n";
-        for (Equipe equipe : equipes) {
-            resultat += equipe.getNomEquipe()+" "+equipe.getPoint()+"pts\n";
+        for (int i = 0; i < max + 2; i++) {
+            ligne += "=";
         }
-        resultat += "\nMatchs\n"+ligne+"\n";
+        String resultat = "Classement Championnat de " + equipes.get(0).getNationEquipe() + " de Division " + equipes.get(0).getDivision() + "\n" + ligne + "\n";
+        for (Equipe equipe : equipes) {
+            resultat += equipe.getNomEquipe() + " " + equipe.getPoint() + "pts\n";
+        }
+        resultat += "\nMatchs\n" + ligne + "\n";
         for (int i = 0; i < journees.length; i++) {
-            Collections.shuffle(journees[i],new Random(System.nanoTime()));
+            Collections.shuffle(journees[i], new Random(System.nanoTime()));
             resultat += "Journee " + (i + 1) + ":\n";
             for (Score match : journees[i]) {
                 resultat += match + "\n";
@@ -97,7 +98,7 @@ public abstract class Championnat extends National {
     public String scoreString() {
         String resultat = "Match:";
         for (int i = 0; i < journees.length; i++) {
-            Collections.shuffle(journees[i],new Random(System.nanoTime()));
+            Collections.shuffle(journees[i], new Random(System.nanoTime()));
             resultat += "Journee " + (i + 1) + ":\n";
             for (Score match : journees[i]) {
                 resultat += match + "\n";
