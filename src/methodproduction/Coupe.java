@@ -23,6 +23,10 @@ public abstract class Coupe extends National {
      */
     public Coupe(ArrayList<Equipe> equipes, String pays) {
         super(equipes, pays);
+        
+        if (this.equipes.size() % 2 != 0) {
+            this.equipes.remove((int) (Math.random() * this.equipes.size()));
+        }
     }
 
 }

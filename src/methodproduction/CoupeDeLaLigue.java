@@ -30,11 +30,11 @@ public class CoupeDeLaLigue extends Coupe {
         for (int i = 0; i < max+2; i++) {
                 ligne+="=";
             }
-        String resultat = "Coupe de la Ligue de "+equipes.get(0).getNationEquipe()+"\n"+ligne + "\n";
+        String resultat = "Coupe de la Ligue de "+pays+"\n"+ligne + "\n";
         for (String score : scores) {
             resultat += score + "\n";
         }
-        resultat += "\nGagnant:\n"+equipes.get(0).getNomEquipe()+"\n";
+        resultat += "\nGagnant:\n"+vainqueur.getNomEquipe()+"\n";
         return resultat;
     }
 }

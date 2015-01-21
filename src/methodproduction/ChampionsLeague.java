@@ -39,7 +39,7 @@ public class ChampionsLeague extends Europe {
         for (String score : scores) {
             resultat += score + "\n";
         }
-        resultat += "\nGagnant:\n"+equipes.get(0).getNomEquipe()+"\n";
+        resultat += "\nGagnant:\n"+vainqueur.getNomEquipe()+"\n";
         return resultat;
     }
     

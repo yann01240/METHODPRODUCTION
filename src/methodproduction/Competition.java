@@ -21,6 +21,7 @@ public abstract class Competition implements Simulation {
     ArrayList<Equipe> equipes;
     ArrayList<String> scores;
     String pays;
+    Equipe vainqueur;
 
     /**
      *
@@ -33,6 +34,7 @@ public abstract class Competition implements Simulation {
         scores = new ArrayList<>();
         Collections.shuffle(this.equipes,new Random(System.nanoTime()));
         tmp=new ArrayList<>();
+        System.out.println(equipes);
     }
 
     /**
@@ -132,7 +134,10 @@ public abstract class Competition implements Simulation {
     @Override
     public void simulation() {
         parcours();
-        if (tmp.size() > 1) {
+        if (tmp.size()==1){
+            vainqueur=tmp.get(0);
+        }
+        if (tmp.size() >= 2) {
             equipes.addAll(tmp);
             tmp.clear();
             simulation();
